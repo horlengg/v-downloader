@@ -1,11 +1,9 @@
 from pytubefix import YouTube
-from pytubefix.cli import on_progress
 import io
-
 
 class Youtube :
     def __init__(self , url):
-        self.yt = YouTube(url, on_progress_callback = on_progress)
+        self.yt = YouTube(url)
         self.url = url
         self.resolutions = []
         self.audio_list = []
