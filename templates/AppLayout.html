@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LengDev</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/leng-dev.png')}}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+</head>
+<body>
+    <header class="app-header">
+        <a href="https://horleng.vercel.app/" target="_blank">
+            <div class="app-logo" style="background-image: url('{{ url_for('static', filename='images/leng-dev.png') }}');">
+            </div>
+        </a>
+        
+        <img src="" alt="">
+        <h1>V.DOWNLOADER</h1>
+    </header>
+    <main class="app-container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    
+</body>
+</html>

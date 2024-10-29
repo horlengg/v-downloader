@@ -1,0 +1,8 @@
+{% extends 'AppLayout.html' %}
+
+{% block content %}
+<div class="message-page">
+    <h4 class="msg">{{data.msg}}</h4>
+    <a href="{{data.to}}" class="btn-link-to">{{data.buttonTitle}}</a>
+</div>
+{% endblock %}
