@@ -26,6 +26,7 @@ async function download(url,button){
     const response = await fetch(url,{method : "POST"});
     if (!response.ok) {
         alert("Failed to fetch video");
+        removeLoadingToClient(button)
         return;
     }
     const blob = await response.blob();

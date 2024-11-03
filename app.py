@@ -1,5 +1,5 @@
 from flask import Flask, render_template,request,redirect,jsonify,send_file
-from utils import Youtube
+from utils import MyYoutube
 
 app = Flask(__name__)
 
@@ -29,7 +29,7 @@ def explore():
                     "buttonTitle" : "Back to Home"
                 }
                 return render_template("Message.html",data=msg)
-            video = Youtube(url=link_url)
+            video = MyYoutube(url=link_url)
             video.process_streams()
             data = {
                 "title" : video.title,
@@ -63,7 +63,7 @@ def download():
         }
         return render_template("Message.html",data=data)
     try:
-        video = Youtube(url=video_url)
+        video = MyYoutube(url=video_url)
         video.process_streams()
         stream = video.get_stream(itag=video_itag)
         blob_file = video.get_file_blob(stream)

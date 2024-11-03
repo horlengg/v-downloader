@@ -1,9 +1,17 @@
 from pytubefix import YouTube
 import io
 
-class Youtube :
+# po_token = "MnRp5wZIkhLGJGnfJ9yjIuIbWlhzb5I_l48uhmuPXUD1LmZ7U3Z_IZxd1H_SgjOvecMlAT3SebFFdFwPoXpHDasHCXeMxXGan51xVa06tVoeBFmcZtlxmXoawvM2JcGNs_gkLtUhBZ5HSkDMBCluBqw1qQYs7Q"
+# visitor_data = "CgtYNldyZW9LWWdQayiEpZu5BjIKCgJLSBIEGgAgWw"
+
+# po_token_verifier = {
+#     "po_token": po_token,
+#     "visitor_data": visitor_data
+# }
+
+class MyYoutube :
     def __init__(self , url):
-        self.yt = YouTube(url)
+        self.yt = YouTube(url, use_po_token=True)
         self.url = url
         self.resolutions = []
         self.audio_list = []
@@ -47,10 +55,13 @@ class Youtube :
         return self.yt.streams.get_by_itag(itag)
     
     def get_file_blob(self,stream) :
-        video_blob = io.BytesIO()
-        stream.stream_to_buffer(video_blob)
-        video_blob.seek(0)
-        return video_blob
+        try :
+            video_blob = io.BytesIO()
+            stream.stream_to_buffer(video_blob)
+            video_blob.seek(0)
+            return video_blob
+        except Exception as e :
+            print(e)
     
     def get_video_duration(self):
         if self.yt is not None:
